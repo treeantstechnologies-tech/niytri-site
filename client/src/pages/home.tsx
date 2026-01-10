@@ -1,135 +1,205 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Brain, Cpu, Globe, Lock, Network, Zap, Menu, X } from "lucide-react";
+import { Link } from "wouter";
+import {
+  ArrowRight,
+  Bot,
+  Brain,
+  Building2,
+  ChartBar,
+  Database,
+  FileSearch,
+  Globe,
+  HeadphonesIcon,
+  IndianRupee,
+  Lock,
+  MessageSquare,
+  Scale,
+  Search,
+  Shield,
+  Sparkles,
+  Users,
+  Zap,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { useState, useEffect } from "react";
+import Navbar from "@/components/layout/navbar";
+import Footer from "@/components/layout/footer";
 import heroBg from "@assets/generated_images/abstract_dark_neural_network_background_with_glowing_nodes.png";
 
 const fadeInUp = {
-  initial: { opacity: 0, y: 20 },
+  initial: { opacity: 0, y: 30 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5 }
+  transition: { duration: 0.6 },
 };
 
 const staggerContainer = {
   animate: {
     transition: {
-      staggerChildren: 0.1
-    }
-  }
+      staggerChildren: 0.1,
+    },
+  },
 };
 
+const bots = [
+  {
+    icon: <HeadphonesIcon className="w-6 h-6" />,
+    name: "IT Support Bot",
+    desc: "Resolve technical queries, troubleshoot issues, and manage IT tickets with AI precision.",
+    color: "from-blue-500 to-cyan-500",
+  },
+  {
+    icon: <IndianRupee className="w-6 h-6" />,
+    name: "Sales Assistant",
+    desc: "Accelerate sales cycles with intelligent lead qualification and proposal generation.",
+    color: "from-green-500 to-emerald-500",
+  },
+  {
+    icon: <ChartBar className="w-6 h-6" />,
+    name: "Finance & Ops Bot",
+    desc: "Streamline financial operations, expense tracking, and operational reporting.",
+    color: "from-amber-500 to-orange-500",
+  },
+  {
+    icon: <Users className="w-6 h-6" />,
+    name: "HR Partner",
+    desc: "Handle employee queries, leave management, and HR policy assistance.",
+    color: "from-pink-500 to-rose-500",
+  },
+  {
+    icon: <Scale className="w-6 h-6" />,
+    name: "RBI Compliance",
+    desc: "Navigate RBI regulations with AI-powered compliance guidance for Indian banks.",
+    color: "from-indigo-500 to-purple-500",
+  },
+  {
+    icon: <Database className="w-6 h-6" />,
+    name: "DataLens Analytics",
+    desc: "Query databases naturally. Execute complex SQL joins with simple questions.",
+    color: "from-violet-500 to-fuchsia-500",
+  },
+  {
+    icon: <Globe className="w-6 h-6" />,
+    name: "Astra Global Search",
+    desc: "Search across your entire knowledge base with web-augmented responses.",
+    color: "from-teal-500 to-cyan-500",
+  },
+];
+
+const features = [
+  {
+    icon: <Lock className="w-5 h-5" />,
+    title: "Role-Based Access Control",
+    desc: "Granular permissions at page and bot level with custom role creation.",
+  },
+  {
+    icon: <Shield className="w-5 h-5" />,
+    title: "MFA via Email OTP",
+    desc: "Enterprise-grade security with multi-factor authentication.",
+  },
+  {
+    icon: <FileSearch className="w-5 h-5" />,
+    title: "RAG Document Intelligence",
+    desc: "Upload documents and get context-aware AI responses.",
+  },
+  {
+    icon: <Sparkles className="w-5 h-5" />,
+    title: "Vision API Integration",
+    desc: "Analyze charts, images, and diagrams within PDF documents.",
+  },
+  {
+    icon: <Building2 className="w-5 h-5" />,
+    title: "Indian Localization",
+    desc: "IST timezone, INR currency, and GST compliance context built-in.",
+  },
+  {
+    icon: <Brain className="w-5 h-5" />,
+    title: "Multi-LLM Support",
+    desc: "Choose from GPT-4, Claude, and other leading AI models.",
+  },
+];
+
+const stats = [
+  { value: "7+", label: "AI Assistants" },
+  { value: "99.9%", label: "Uptime SLA" },
+  { value: "500+", label: "Concurrent Users" },
+  { value: "24/7", label: "Support" },
+];
+
 export default function Home() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden selection:bg-primary/30 selection:text-primary-foreground">
-      {/* Navigation */}
-      <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? "bg-background/80 backdrop-blur-md border-b border-border/50 py-4" : "bg-transparent py-6"
-        }`}
-      >
-        <div className="container mx-auto px-6 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-primary to-secondary flex items-center justify-center">
-              <Brain className="w-5 h-5 text-white" />
-            </div>
-            <span className="text-xl font-display font-bold tracking-tight">Niytri AI</span>
-          </div>
-
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-8">
-            <a href="#features" className="text-sm font-medium hover:text-primary transition-colors">Platform</a>
-            <a href="#solutions" className="text-sm font-medium hover:text-primary transition-colors">Solutions</a>
-            <a href="#research" className="text-sm font-medium hover:text-primary transition-colors">Research</a>
-            <Button variant="secondary" className="font-medium rounded-full px-6">
-              Get Access
-            </Button>
-          </div>
-
-          {/* Mobile Toggle */}
-          <button 
-            className="md:hidden text-foreground"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            {mobileMenuOpen ? <X /> : <Menu />}
-          </button>
-        </div>
-
-        {/* Mobile Menu */}
-        {mobileMenuOpen && (
-          <motion.div 
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            className="md:hidden bg-background border-b border-border px-6 py-4 flex flex-col gap-4"
-          >
-            <a href="#features" className="text-sm font-medium py-2" onClick={() => setMobileMenuOpen(false)}>Platform</a>
-            <a href="#solutions" className="text-sm font-medium py-2" onClick={() => setMobileMenuOpen(false)}>Solutions</a>
-            <a href="#research" className="text-sm font-medium py-2" onClick={() => setMobileMenuOpen(false)}>Research</a>
-            <Button className="w-full rounded-full">Get Access</Button>
-          </motion.div>
-        )}
-      </nav>
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+      <Navbar />
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
-        {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
-          <img 
-            src={heroBg} 
-            alt="Neural Network Background" 
-            className="w-full h-full object-cover opacity-60"
+          <img
+            src={heroBg}
+            alt="Neural Network"
+            className="w-full h-full object-cover opacity-50"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/50 to-background z-10" />
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-background/50 z-10" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/60 to-background z-10" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-background/80 z-10" />
         </div>
 
         <div className="container mx-auto px-6 relative z-20">
-          <motion.div 
+          <motion.div
             initial="initial"
             animate="animate"
             variants={staggerContainer}
             className="max-w-4xl"
           >
-            <motion.div variants={fadeInUp} className="flex items-center gap-2 mb-6">
-              <span className="px-3 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary text-xs font-semibold tracking-wider uppercase">
-                v2.0 Neural Engine Live
+            <motion.div variants={fadeInUp} className="flex items-center gap-3 mb-6">
+              <span className="px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-xs font-semibold tracking-wider uppercase">
+                Enterprise AI Platform
+              </span>
+              <span className="px-4 py-1.5 rounded-full border border-secondary/30 bg-secondary/10 text-secondary text-xs font-semibold">
+                Made in India 🇮🇳
               </span>
             </motion.div>
-            
-            <motion.h1 variants={fadeInUp} className="text-5xl md:text-7xl lg:text-8xl font-display font-bold leading-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-white/60">
-              Intelligence, <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-primary">Evolved.</span>
+
+            <motion.h1
+              variants={fadeInUp}
+              className="text-4xl md:text-6xl lg:text-7xl font-display font-bold leading-tight mb-6"
+            >
+              Unified AI Agents for{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-primary">
+                Indian Enterprises
+              </span>
             </motion.h1>
-            
-            <motion.p variants={fadeInUp} className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-10 leading-relaxed">
-              Niytri AI is the autonomous neural backbone for the next generation of enterprise systems. 
-              Self-learning, adaptive, and infinitely scalable.
+
+            <motion.p
+              variants={fadeInUp}
+              className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-10 leading-relaxed"
+            >
+              NIYTRI AI is a highly customizable enterprise platform that deploys specialized AI assistants 
+              across departments — from IT support to RBI compliance. Built for India, scaled for the world.
             </motion.p>
-            
+
             <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="rounded-full text-base px-8 h-12 bg-primary hover:bg-primary/90 text-white shadow-[0_0_20px_rgba(124,58,237,0.3)]">
-                Start Building <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
-              <Button variant="outline" size="lg" className="rounded-full text-base px-8 h-12 border-white/10 hover:bg-white/5 hover:text-white backdrop-blur-sm">
-                View Documentation
-              </Button>
+              <Link href="/enquiry">
+                <Button
+                  size="lg"
+                  className="rounded-full text-base px-8 h-14 bg-gradient-to-r from-primary to-secondary hover:opacity-90 text-white shadow-lg shadow-primary/30"
+                  data-testid="button-request-demo"
+                >
+                  Request a Demo <ArrowRight className="ml-2 w-5 h-5" />
+                </Button>
+              </Link>
+              <Link href="/platform">
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="rounded-full text-base px-8 h-14 border-white/20 hover:bg-white/5"
+                  data-testid="button-explore-platform"
+                >
+                  Explore Platform
+                </Button>
+              </Link>
             </motion.div>
           </motion.div>
         </div>
 
-        {/* Scroll Indicator */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, y: [0, 10, 0] }}
           transition={{ delay: 2, duration: 2, repeat: Infinity }}
@@ -140,68 +210,107 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* Features Grid */}
-      <section id="features" className="py-24 relative bg-background">
+      {/* Stats Section */}
+      <section className="py-16 border-y border-white/10 bg-card/30 backdrop-blur-sm">
         <div className="container mx-auto px-6">
-          <div className="text-center max-w-2xl mx-auto mb-20">
-            <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">Built for the complexity of tomorrow</h2>
-            <p className="text-muted-foreground">
-              Our proprietary architecture transcends traditional transformer models, offering unprecedented efficiency and context retention.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                icon: <Brain className="w-6 h-6 text-primary" />,
-                title: "Neural Adaptation",
-                desc: "Models that learn and adapt in real-time without full retraining cycles."
-              },
-              {
-                icon: <Network className="w-6 h-6 text-secondary" />,
-                title: "Infinite Context",
-                desc: "Process entire codebases or legal archives with zero loss in fidelity."
-              },
-              {
-                icon: <Zap className="w-6 h-6 text-amber-400" />,
-                title: "Micro-Latency",
-                desc: "Sub-10ms inference times designed for high-frequency trading and robotics."
-              },
-              {
-                icon: <Lock className="w-6 h-6 text-emerald-400" />,
-                title: "Sovereign Privacy",
-                desc: "Deploy on-premise or in air-gapped environments with full data sovereignty."
-              },
-              {
-                icon: <Globe className="w-6 h-6 text-blue-400" />,
-                title: "Global Linguistics",
-                desc: "Native understanding of 100+ languages including code and technical dialects."
-              },
-              {
-                icon: <Cpu className="w-6 h-6 text-purple-400" />,
-                title: "Edge Optimized",
-                desc: "Run powerful 7B+ parameter models directly on consumer hardware."
-              }
-            ].map((feature, idx) => (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {stats.map((stat, idx) => (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="group relative p-1 rounded-2xl bg-gradient-to-b from-white/10 to-transparent hover:from-primary/50 hover:to-secondary/50 transition-all duration-500"
+                className="text-center"
               >
-                <div className="relative h-full bg-card/80 backdrop-blur-xl border border-white/5 p-8 rounded-xl overflow-hidden group-hover:bg-card/90 transition-colors">
-                  <div className="absolute top-0 right-0 p-32 bg-primary/10 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 group-hover:bg-primary/20 transition-all duration-500" />
-                  
-                  <div className="relative z-10 mb-6 p-3 bg-white/5 w-fit rounded-lg border border-white/10 group-hover:border-primary/30 transition-colors">
-                    {feature.icon}
+                <div className="text-4xl md:text-5xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary mb-2">
+                  {stat.value}
+                </div>
+                <div className="text-muted-foreground text-sm">{stat.label}</div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* AI Bots Section */}
+      <section className="py-24 relative">
+        <div className="container mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center max-w-3xl mx-auto mb-16"
+          >
+            <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">
+              7 Specialized AI Assistants
+            </h2>
+            <p className="text-muted-foreground text-lg">
+              Purpose-built bots for every department. Each AI assistant is pre-trained for specific business functions 
+              and can be customized to your organization's needs.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {bots.map((bot, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.05 }}
+                className="group relative"
+                data-testid={`card-bot-${idx}`}
+              >
+                <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="relative h-full bg-card/50 backdrop-blur-sm border border-white/10 p-6 rounded-2xl hover:border-white/20 transition-all duration-300">
+                  <div
+                    className={`w-12 h-12 rounded-xl bg-gradient-to-br ${bot.color} flex items-center justify-center text-white mb-4`}
+                  >
+                    {bot.icon}
                   </div>
-                  
-                  <h3 className="relative z-10 text-xl font-bold mb-3 font-display">{feature.title}</h3>
-                  <p className="relative z-10 text-muted-foreground text-sm leading-relaxed">
-                    {feature.desc}
-                  </p>
+                  <h3 className="text-lg font-bold mb-2 font-display">{bot.name}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">{bot.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-24 bg-gradient-to-b from-transparent via-card/30 to-transparent">
+        <div className="container mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center max-w-3xl mx-auto mb-16"
+          >
+            <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">
+              Enterprise-Grade Capabilities
+            </h2>
+            <p className="text-muted-foreground text-lg">
+              Built with security, compliance, and scalability at its core.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {features.map((feature, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className="flex gap-4"
+              >
+                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                  {feature.icon}
+                </div>
+                <div>
+                  <h3 className="font-bold mb-1">{feature.title}</h3>
+                  <p className="text-muted-foreground text-sm">{feature.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -211,50 +320,33 @@ export default function Home() {
 
       {/* CTA Section */}
       <section className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-primary/5" />
-        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5" />
-        
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-secondary/10 to-primary/10" />
         <div className="container mx-auto px-6 relative z-10">
-          <div className="max-w-4xl mx-auto text-center bg-card/50 backdrop-blur-2xl border border-white/10 p-12 rounded-3xl shadow-2xl">
-            <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">Ready to evolve your stack?</h2>
+          <div className="max-w-4xl mx-auto text-center bg-card/60 backdrop-blur-2xl border border-white/10 p-12 md:p-16 rounded-3xl">
+            <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">
+              Ready to Transform Your Enterprise?
+            </h2>
             <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
-              Join leading enterprises using Niytri AI to automate complex decision-making pipelines.
+              Join leading Indian enterprises using NIYTRI AI to automate operations, 
+              enhance productivity, and deliver exceptional employee experiences.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button size="lg" className="w-full sm:w-auto rounded-full bg-white text-black hover:bg-gray-200">
-                Get Started Now
-              </Button>
-              <Button variant="outline" size="lg" className="w-full sm:w-auto rounded-full border-white/20 hover:bg-white/5">
-                Contact Sales
-              </Button>
+              <Link href="/enquiry">
+                <Button size="lg" className="rounded-full bg-white text-black hover:bg-gray-100 px-8 h-14">
+                  Schedule a Demo
+                </Button>
+              </Link>
+              <Link href="/contact">
+                <Button variant="outline" size="lg" className="rounded-full border-white/20 hover:bg-white/5 px-8 h-14">
+                  Contact Sales
+                </Button>
+              </Link>
             </div>
-            <p className="mt-6 text-xs text-muted-foreground">
-              No credit card required for developer sandbox.
-            </p>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-black py-12 border-t border-white/10">
-        <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="flex items-center gap-2">
-              <Brain className="w-5 h-5 text-primary" />
-              <span className="text-lg font-display font-bold">Niytri AI</span>
-            </div>
-            <div className="flex items-center gap-8 text-sm text-muted-foreground">
-              <a href="#" className="hover:text-white transition-colors">Privacy</a>
-              <a href="#" className="hover:text-white transition-colors">Terms</a>
-              <a href="#" className="hover:text-white transition-colors">Twitter</a>
-              <a href="#" className="hover:text-white transition-colors">GitHub</a>
-            </div>
-            <div className="text-xs text-muted-foreground">
-              © 2026 Niytri AI Inc. All rights reserved.
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
