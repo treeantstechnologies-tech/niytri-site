@@ -23,7 +23,6 @@ import {
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
-import heroBg from "@assets/generated_images/abstract_dark_neural_network_background_with_glowing_nodes.png";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
@@ -132,13 +131,10 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img
-            src={heroBg}
-            alt="Neural Network"
-            className="w-full h-full object-cover opacity-50"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/60 to-background z-10" />
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-background/80 z-10" />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-secondary/20" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/30 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-secondary/20 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/40 to-background z-10" />
         </div>
 
         <div className="container mx-auto px-6 relative z-20">
