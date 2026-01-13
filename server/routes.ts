@@ -45,7 +45,7 @@ export async function registerRoutes(
 
         await client.emails.send({
           from: fromEmail,
-          to: "hello@niytri.com",
+          to: "support@niytri.com",
           subject: `New Demo Request from ${validatedData.company}`,
           html: `
             <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">

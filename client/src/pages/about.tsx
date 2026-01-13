@@ -41,7 +41,7 @@ const values = [
 const milestones = [
   { year: "2024", event: "NIYTRI AI founded by BH2S Learning and Technologies" },
   { year: "2024", event: "First enterprise deployment with 7 AI assistants" },
-  { year: "2025", event: "RBI Compliance Bot launched for banking sector" },
+  { year: "2025", event: "Compliance Bot launched for enterprise sector" },
   { year: "2025", event: "DataLens and Astra modules released" },
   { year: "2026", event: "Expanded to support 10,000+ concurrent users" },
 ];

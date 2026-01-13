@@ -167,11 +167,11 @@ export default function Enquiry() {
 
               <div className="mt-12 p-6 bg-card/50 border border-white/10 rounded-xl">
                 <p className="text-sm text-muted-foreground mb-2">
-                  Prefer to talk directly?
+                  Have questions?
                 </p>
-                <p className="font-medium mb-4">Call us at +91 80 1234 5678</p>
+                <p className="font-medium mb-4">Email us at support@niytri.com</p>
                 <p className="text-xs text-muted-foreground">
-                  Available Monday - Friday, 9 AM - 6 PM IST
+                  We typically respond within 24 hours
                 </p>
               </div>
             </motion.div>

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { Mail, MapPin, Phone, Clock, MessageSquare } from "lucide-react";
+import { Mail, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
@@ -10,37 +10,8 @@ const contactMethods = [
     icon: <Mail className="w-6 h-6" />,
     title: "Email Us",
     description: "For general inquiries and support",
-    value: "hello@niytri.com",
-    action: "mailto:hello@niytri.com",
-  },
-  {
-    icon: <Phone className="w-6 h-6" />,
-    title: "Call Us",
-    description: "Speak with our sales team",
-    value: "+91 80 1234 5678",
-    action: "tel:+918012345678",
-  },
-  {
-    icon: <MessageSquare className="w-6 h-6" />,
-    title: "Live Chat",
-    description: "Get instant support",
-    value: "Available 9 AM - 6 PM IST",
-    action: "#",
-  },
-];
-
-const offices = [
-  {
-    city: "Bengaluru",
-    type: "Headquarters",
-    address: "123 Tech Park, Whitefield\nBengaluru, Karnataka 560066",
-    phone: "+91 80 1234 5678",
-  },
-  {
-    city: "Mumbai",
-    type: "Regional Office",
-    address: "456 Business Tower, BKC\nMumbai, Maharashtra 400051",
-    phone: "+91 22 9876 5432",
+    value: "support@niytri.com",
+    action: "mailto:support@niytri.com",
   },
 ];
 
@@ -78,7 +49,7 @@ export default function Contact() {
       {/* Contact Methods */}
       <section className="py-16">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="flex justify-center">
             {contactMethods.map((method, idx) => (
               <motion.a
                 key={idx}
@@ -122,49 +93,6 @@ export default function Contact() {
               </Button>
             </Link>
           </motion.div>
-        </div>
-      </section>
-
-      {/* Offices */}
-      <section className="py-20">
-        <div className="container mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl font-display font-bold mb-4">Our Offices</h2>
-            <p className="text-muted-foreground">Visit us at our locations across India</p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {offices.map((office, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="bg-card/50 border border-white/10 rounded-xl p-8"
-              >
-                <div className="flex items-center gap-2 mb-4">
-                  <MapPin className="w-5 h-5 text-primary" />
-                  <span className="text-xs uppercase tracking-wider text-muted-foreground">
-                    {office.type}
-                  </span>
-                </div>
-                <h3 className="text-2xl font-display font-bold mb-4">{office.city}</h3>
-                <p className="text-muted-foreground text-sm whitespace-pre-line mb-4">
-                  {office.address}
-                </p>
-                <p className="text-sm">
-                  <Phone className="w-4 h-4 inline mr-2 text-primary" />
-                  {office.phone}
-                </p>
-              </motion.div>
-            ))}
-          </div>
         </div>
       </section>
 

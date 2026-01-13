@@ -65,8 +65,8 @@ const bots = [
   },
   {
     icon: <Scale className="w-6 h-6" />,
-    name: "RBI Compliance",
-    desc: "Navigate RBI regulations with AI-powered compliance guidance for Indian banks.",
+    name: "Compliance Bot",
+    desc: "Navigate regulatory requirements with AI-powered compliance guidance for enterprises.",
     color: "from-indigo-500 to-purple-500",
   },
   {

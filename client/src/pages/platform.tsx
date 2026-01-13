@@ -58,9 +58,9 @@ const bots = [
   },
   {
     icon: <Scale className="w-8 h-8" />,
-    name: "RBI Compliance Bot",
-    description: "Navigate Reserve Bank of India regulations with AI-powered compliance guidance, circular search, and regulatory updates for banks and NBFCs.",
-    features: ["RBI Circulars", "KYC Guidelines", "AML Compliance", "Regulatory Updates"],
+    name: "Compliance Bot",
+    description: "Navigate regulatory requirements with AI-powered compliance guidance, policy search, and regulatory updates for enterprises.",
+    features: ["Policy Search", "Compliance Guidelines", "Audit Support", "Regulatory Updates"],
     color: "from-indigo-500 to-purple-500",
   },
   {
