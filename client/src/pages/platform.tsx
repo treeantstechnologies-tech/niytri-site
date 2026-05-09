@@ -5,7 +5,6 @@ import {
   Bot,
   Brain,
   ChartBar,
-  ChevronRight,
   Database,
   Eye,
   FileText,
@@ -14,9 +13,7 @@ import {
   IndianRupee,
   Layers,
   Lock,
-  MessageSquare,
   Scale,
-  Search,
   Settings,
   Shield,
   Sparkles,
@@ -59,7 +56,7 @@ const bots = [
   {
     icon: <Scale className="w-8 h-8" />,
     name: "Compliance Bot",
-    description: "Navigate regulatory requirements with AI-powered compliance guidance, policy search, and regulatory updates for enterprises.",
+    description: "Navigate RBI, SEBI, and IRDAI regulatory requirements with AI-powered compliance guidance, policy search, and regulatory updates for BFSI enterprises.",
     features: ["Policy Search", "Compliance Guidelines", "Audit Support", "Regulatory Updates"],
     color: "from-indigo-500 to-purple-500",
   },
@@ -113,12 +110,12 @@ const capabilities = [
 ];
 
 const roles = [
-  { name: "Superadmin", desc: "Full system access including audit logs and security settings", color: "bg-red-500/20 text-red-400 border-red-500/30" },
-  { name: "Admin", desc: "User management, settings configuration, document management", color: "bg-orange-500/20 text-orange-400 border-orange-500/30" },
-  { name: "Manager", desc: "Department-level access with team oversight capabilities", color: "bg-yellow-500/20 text-yellow-400 border-yellow-500/30" },
-  { name: "Employee", desc: "Standard user access to assigned bots based on role", color: "bg-green-500/20 text-green-400 border-green-500/30" },
-  { name: "Finance Lead", desc: "Finance bot access with reporting and compliance features", color: "bg-blue-500/20 text-blue-400 border-blue-500/30" },
-  { name: "Document Uploader", desc: "Knowledge base document management and upload permissions", color: "bg-purple-500/20 text-purple-400 border-purple-500/30" },
+  { name: "Superadmin", desc: "Full system access including audit logs and security settings", color: "bg-red-50 text-red-700 border-red-200 dark:bg-red-900/20 dark:text-red-400 dark:border-red-800/30" },
+  { name: "Admin", desc: "User management, settings configuration, document management", color: "bg-orange-50 text-orange-700 border-orange-200 dark:bg-orange-900/20 dark:text-orange-400 dark:border-orange-800/30" },
+  { name: "Manager", desc: "Department-level access with team oversight capabilities", color: "bg-yellow-50 text-yellow-700 border-yellow-200 dark:bg-yellow-900/20 dark:text-yellow-400 dark:border-yellow-800/30" },
+  { name: "Employee", desc: "Standard user access to assigned bots based on role", color: "bg-green-50 text-green-700 border-green-200 dark:bg-green-900/20 dark:text-green-400 dark:border-green-800/30" },
+  { name: "Finance Lead", desc: "Finance bot access with reporting and compliance features", color: "bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-900/20 dark:text-blue-400 dark:border-blue-800/30" },
+  { name: "Document Uploader", desc: "Knowledge base document management and upload permissions", color: "bg-purple-50 text-purple-700 border-purple-200 dark:bg-purple-900/20 dark:text-purple-400 dark:border-purple-800/30" },
 ];
 
 export default function Platform() {
@@ -175,7 +172,7 @@ export default function Platform() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.05 }}
-                className="bg-card/50 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:border-white/20 transition-all duration-300"
+                className="bg-card border border-border rounded-2xl p-8 hover:border-primary/30 hover:shadow-md transition-all duration-300"
                 data-testid={`card-platform-bot-${idx}`}
               >
                 <div className="flex flex-col lg:flex-row gap-8">
@@ -189,7 +186,7 @@ export default function Platform() {
                       {bot.features.map((feature, fidx) => (
                         <span
                           key={fidx}
-                          className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-sm text-muted-foreground"
+                          className="px-3 py-1 rounded-full bg-muted border border-border text-sm text-muted-foreground"
                         >
                           {feature}
                         </span>
@@ -204,7 +201,7 @@ export default function Platform() {
       </section>
 
       {/* Core Capabilities */}
-      <section className="py-20 bg-gradient-to-b from-transparent via-card/30 to-transparent">
+      <section className="py-20 bg-muted/20">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -226,7 +223,7 @@ export default function Platform() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="bg-card/50 border border-white/10 rounded-xl p-6 hover:border-primary/30 transition-colors"
+                className="bg-card border border-border rounded-xl p-6 hover:border-primary/30 hover:shadow-sm transition-all"
               >
                 <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-4">
                   {cap.icon}
@@ -275,7 +272,7 @@ export default function Platform() {
       {/* CTA */}
       <section className="py-20">
         <div className="container mx-auto px-6">
-          <div className="bg-gradient-to-r from-primary/20 via-secondary/20 to-primary/20 border border-white/10 rounded-3xl p-12 text-center">
+          <div className="bg-gradient-to-r from-primary/10 via-secondary/10 to-primary/10 border border-border rounded-3xl p-12 text-center">
             <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
               See the Platform in Action
             </h2>
@@ -283,7 +280,7 @@ export default function Platform() {
               Request a personalized demo to see how NIYTRI AI can transform your enterprise operations.
             </p>
             <Link href="/enquiry">
-              <Button size="lg" className="rounded-full bg-white text-black hover:bg-gray-100 px-8 h-14">
+              <Button size="lg" className="rounded-full bg-gradient-to-r from-primary to-secondary text-white hover:opacity-90 px-8 h-14">
                 Request Demo <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>

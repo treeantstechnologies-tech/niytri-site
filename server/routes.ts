@@ -36,7 +36,7 @@ export async function registerRoutes(
                 ${validatedData.message ? `<p><strong>Message:</strong> ${validatedData.message}</p>` : ''}
               </div>
               
-              <p>In the meantime, feel free to explore our platform documentation or reach out to us at <a href="mailto:hello@niytri.com">hello@niytri.com</a></p>
+              <p>In the meantime, feel free to explore our platform documentation or reach out to us at <a href="mailto:admin@niytri.com">admin@niytri.com</a></p>
               
               <p style="margin-top: 30px; color: #666;">Best regards,<br/>The NIYTRI AI Team</p>
             </div>
@@ -45,7 +45,7 @@ export async function registerRoutes(
 
         await client.emails.send({
           from: fromEmail,
-          to: "support@niytri.com",
+          to: ["admin@niytri.com", "amit@niytri.com"],
           subject: `New Demo Request from ${validatedData.company}`,
           html: `
             <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">

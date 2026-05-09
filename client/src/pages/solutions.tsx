@@ -7,6 +7,7 @@ import {
   GraduationCap,
   Landmark,
   Pill,
+  ShieldCheck,
   ShoppingCart,
   Truck,
 } from "lucide-react";
@@ -18,14 +19,50 @@ const industries = [
   {
     icon: <Landmark className="w-10 h-10" />,
     name: "Banking & Finance",
-    description: "RBI compliance assistance, customer service automation, fraud detection support, and loan processing intelligence for banks and NBFCs.",
+    badge: "Primary Focus",
+    badgeColor: "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400",
+    description: "RBI and SEBI compliance assistance, customer service automation, fraud detection support, KYC intelligence, and loan processing for banks and NBFCs.",
     useCases: [
-      "RBI circular search and compliance guidance",
-      "Customer query resolution",
+      "RBI & SEBI circular search and compliance guidance",
+      "Customer query resolution — 24/7 automation",
       "KYC document verification assistance",
-      "Loan eligibility assessment",
+      "Loan eligibility assessment and documentation",
+      "Treasury operations and reporting",
+      "Audit trail and risk documentation",
     ],
     color: "from-blue-600 to-indigo-600",
+  },
+  {
+    icon: <ShieldCheck className="w-10 h-10" />,
+    name: "Insurance",
+    badge: "Primary Focus",
+    badgeColor: "bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-400",
+    description: "IRDAI compliance, policy query automation, claims processing support, and agent productivity tools for life, general, and health insurance companies.",
+    useCases: [
+      "IRDAI regulation search and compliance",
+      "Policy and premium query resolution",
+      "Claims status and documentation assistance",
+      "Agent onboarding and training support",
+      "Underwriting query assistance",
+      "Customer grievance management",
+    ],
+    color: "from-indigo-600 to-purple-600",
+  },
+  {
+    icon: <Factory className="w-10 h-10" />,
+    name: "Manufacturing",
+    badge: "Active Clients",
+    badgeColor: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
+    description: "Operational queries, maintenance scheduling, inventory management, and compliance documentation for manufacturing enterprises.",
+    useCases: [
+      "Equipment maintenance queries",
+      "Safety protocol assistance",
+      "Inventory and procurement queries",
+      "Quality compliance documentation",
+      "Supplier management support",
+      "Production analytics and reporting",
+    ],
+    color: "from-amber-600 to-orange-600",
   },
   {
     icon: <Building className="w-10 h-10" />,
@@ -36,20 +73,10 @@ const industries = [
       "Code and documentation search",
       "Onboarding assistance for new hires",
       "Internal policy FAQ",
+      "Incident management support",
+      "DevOps runbook assistance",
     ],
     color: "from-cyan-600 to-teal-600",
-  },
-  {
-    icon: <Factory className="w-10 h-10" />,
-    name: "Manufacturing",
-    description: "Operational queries, maintenance scheduling, inventory management, and compliance documentation for manufacturing enterprises.",
-    useCases: [
-      "Equipment maintenance queries",
-      "Safety protocol assistance",
-      "Inventory and procurement",
-      "Quality compliance documentation",
-    ],
-    color: "from-amber-600 to-orange-600",
   },
   {
     icon: <ShoppingCart className="w-10 h-10" />,
@@ -60,6 +87,8 @@ const industries = [
       "Product information queries",
       "Vendor onboarding assistance",
       "Sales performance analytics",
+      "Return and refund process guidance",
+      "Category management support",
     ],
     color: "from-pink-600 to-rose-600",
   },
@@ -72,6 +101,8 @@ const industries = [
       "CDSCO compliance guidance",
       "Patient education materials",
       "Clinical trial documentation",
+      "Formulary and drug information",
+      "Provider credentialing assistance",
     ],
     color: "from-emerald-600 to-green-600",
   },
@@ -84,6 +115,8 @@ const industries = [
       "Course information assistance",
       "Faculty research support",
       "Administrative FAQ",
+      "Scholarship information",
+      "Exam schedule and results assistance",
     ],
     color: "from-violet-600 to-purple-600",
   },
@@ -93,9 +126,11 @@ const industries = [
     description: "Shipment tracking, vendor queries, route optimization guidance, and compliance documentation for logistics companies.",
     useCases: [
       "Shipment status queries",
-      "Vendor communication",
-      "Customs documentation",
-      "Driver support assistance",
+      "Vendor communication assistance",
+      "Customs documentation support",
+      "Driver assistance and support",
+      "Warehouse operations queries",
+      "Last-mile delivery coordination",
     ],
     color: "from-slate-600 to-gray-600",
   },
@@ -148,15 +183,15 @@ export default function Solutions() {
               </span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              NIYTRI AI adapts to your industry's unique challenges with specialized configurations, 
-              compliance awareness, and domain-specific knowledge bases.
+              NIYTRI AI is purpose-built for BFSI enterprises, with deep regulatory context for RBI, 
+              SEBI, and IRDAI. We also serve Manufacturing, IT, and other sectors.
             </p>
           </motion.div>
         </div>
       </section>
 
       {/* Benefits */}
-      <section className="py-16 border-y border-white/10 bg-card/30">
+      <section className="py-16 border-y border-border bg-muted/30">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {benefits.map((benefit, idx) => (
@@ -204,7 +239,7 @@ export default function Solutions() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.05 }}
-                className="bg-card/50 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:border-white/20 transition-all duration-300"
+                className="bg-card border border-border rounded-2xl p-8 hover:border-primary/30 hover:shadow-md transition-all duration-300"
                 data-testid={`card-industry-${idx}`}
               >
                 <div className="flex flex-col lg:flex-row gap-8">
@@ -212,12 +247,19 @@ export default function Solutions() {
                     {industry.icon}
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-2xl font-display font-bold mb-3">{industry.name}</h3>
+                    <div className="flex flex-wrap items-center gap-3 mb-3">
+                      <h3 className="text-2xl font-display font-bold">{industry.name}</h3>
+                      {industry.badge && (
+                        <span className={`text-xs font-semibold px-3 py-1 rounded-full ${industry.badgeColor}`}>
+                          {industry.badge}
+                        </span>
+                      )}
+                    </div>
                     <p className="text-muted-foreground mb-6">{industry.description}</p>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
                       {industry.useCases.map((useCase, uidx) => (
                         <div key={uidx} className="flex items-center gap-2 text-sm">
-                          <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                          <div className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
                           <span>{useCase}</span>
                         </div>
                       ))}
@@ -233,7 +275,7 @@ export default function Solutions() {
       {/* CTA */}
       <section className="py-20">
         <div className="container mx-auto px-6">
-          <div className="bg-gradient-to-r from-primary/20 via-secondary/20 to-primary/20 border border-white/10 rounded-3xl p-12 text-center">
+          <div className="bg-gradient-to-r from-primary/10 via-secondary/10 to-primary/10 border border-border rounded-3xl p-12 text-center">
             <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
               Find the Right Solution for Your Business
             </h2>
@@ -241,7 +283,7 @@ export default function Solutions() {
               Our team will help you identify the best AI configuration for your industry and use cases.
             </p>
             <Link href="/enquiry">
-              <Button size="lg" className="rounded-full bg-white text-black hover:bg-gray-100 px-8 h-14">
+              <Button size="lg" className="rounded-full bg-gradient-to-r from-primary to-secondary text-white hover:opacity-90 px-8 h-14">
                 Schedule Consultation <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>

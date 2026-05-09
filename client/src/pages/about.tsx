@@ -41,9 +41,10 @@ const values = [
 const milestones = [
   { year: "2024", event: "NIYTRI AI founded by BH2S Learning and Technologies" },
   { year: "2024", event: "First enterprise deployment with 7 AI assistants" },
-  { year: "2025", event: "Compliance Bot launched for enterprise sector" },
+  { year: "2025", event: "Compliance Bot launched for BFSI sector" },
   { year: "2025", event: "DataLens and Astra modules released" },
-  { year: "2026", event: "Expanded to support 10,000+ concurrent users" },
+  { year: "2025", event: "Manufacturing vertical onboarded as second key industry" },
+  { year: "2026", event: "Expanded to support 500+ concurrent users with 99.9% SLA" },
 ];
 
 const team = [
@@ -77,8 +78,9 @@ export default function About() {
               </span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              NIYTRI AI is on a mission to democratize enterprise AI for Indian businesses — 
-              making powerful, secure, and customizable AI accessible to organizations of all sizes.
+              NIYTRI is on a mission to empower Indian enterprises with AI and technology services — 
+              making powerful, secure, and customizable AI accessible to organizations of all sizes, 
+              with a special focus on the BFSI sector.
             </p>
           </motion.div>
         </div>
@@ -96,18 +98,20 @@ export default function About() {
               <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">Our Story</h2>
               <div className="space-y-4 text-muted-foreground">
                 <p>
-                  NIYTRI AI was born from a simple observation: Indian enterprises were struggling to adopt 
-                  AI effectively. Generic chatbots couldn't handle specialized queries, security was an 
-                  afterthought, and compliance with Indian regulations was non-existent.
+                  NIYTRI AI was born from a simple observation: Indian enterprises — particularly in banking, 
+                  insurance, and finance — were struggling to adopt AI effectively. Generic chatbots couldn't 
+                  handle specialized queries, security was an afterthought, and compliance with Indian 
+                  regulations was non-existent.
                 </p>
                 <p>
                   Founded by BH2S Learning and Technologies, we set out to build an enterprise AI platform 
-                  that truly understands Indian business needs — from RBI compliance for banks to GST 
-                  context for finance teams.
+                  that truly understands Indian business needs — from RBI compliance for banks to IRDAI 
+                  guidelines for insurance companies, and GST context for finance teams.
                 </p>
                 <p>
-                  Today, NIYTRI AI powers AI assistants across multiple industries, helping thousands of 
-                  employees be more productive while ensuring data security and regulatory compliance.
+                  Today, NIYTRI offers both the flagship AI platform and a full suite of IT services — 
+                  giving enterprises a single trusted partner for their entire digital journey, from cloud 
+                  infrastructure to AI-powered automation.
                 </p>
               </div>
             </motion.div>
@@ -116,7 +120,7 @@ export default function About() {
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="bg-card/50 border border-white/10 rounded-2xl p-8"
+              className="bg-card border border-border rounded-2xl p-8"
             >
               <h3 className="text-xl font-display font-bold mb-6 flex items-center gap-2">
                 <Rocket className="w-5 h-5 text-primary" /> Our Journey
@@ -135,7 +139,7 @@ export default function About() {
       </section>
 
       {/* Values */}
-      <section className="py-20 bg-gradient-to-b from-transparent via-card/30 to-transparent">
+      <section className="py-20 bg-muted/20">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -193,7 +197,7 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="bg-card/50 border border-white/10 rounded-xl p-6 text-center"
+                className="bg-card border border-border rounded-xl p-6 text-center"
               >
                 <div className="text-4xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary mb-2">
                   {item.count}
@@ -207,7 +211,7 @@ export default function About() {
       </section>
 
       {/* Location */}
-      <section className="py-20 bg-gradient-to-b from-transparent via-card/30 to-transparent">
+      <section className="py-20 bg-muted/20">
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center">
             <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary mx-auto mb-6">
@@ -228,7 +232,7 @@ export default function About() {
       {/* CTA */}
       <section className="py-20">
         <div className="container mx-auto px-6">
-          <div className="bg-gradient-to-r from-primary/20 via-secondary/20 to-primary/20 border border-white/10 rounded-3xl p-12 text-center">
+          <div className="bg-gradient-to-r from-primary/10 via-secondary/10 to-primary/10 border border-border rounded-3xl p-12 text-center">
             <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
               Join Us on Our Journey
             </h2>
@@ -237,12 +241,12 @@ export default function About() {
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link href="/enquiry">
-                <Button size="lg" className="rounded-full bg-white text-black hover:bg-gray-100 px-8 h-14">
+                <Button size="lg" className="rounded-full bg-gradient-to-r from-primary to-secondary text-white hover:opacity-90 px-8 h-14">
                   Get in Touch <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
               </Link>
               <Link href="/contact">
-                <Button variant="outline" size="lg" className="rounded-full border-white/20 hover:bg-white/5 px-8 h-14">
+                <Button variant="outline" size="lg" className="rounded-full px-8 h-14">
                   Contact Us
                 </Button>
               </Link>

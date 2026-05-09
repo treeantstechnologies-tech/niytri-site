@@ -10,8 +10,8 @@ const contactMethods = [
     icon: <Mail className="w-6 h-6" />,
     title: "Email Us",
     description: "For general inquiries and support",
-    value: "support@niytri.com",
-    action: "mailto:support@niytri.com",
+    value: "admin@niytri.com",
+    action: "mailto:admin@niytri.com",
   },
 ];
 
@@ -39,7 +39,7 @@ export default function Contact() {
               </span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Have questions about NIYTRI AI? We're here to help. Reach out to our team for 
+              Have questions about NIYTRI AI or our IT Services? We're here to help. Reach out for 
               sales inquiries, support, or partnership opportunities.
             </p>
           </motion.div>
@@ -58,7 +58,7 @@ export default function Contact() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="bg-card/50 border border-white/10 rounded-xl p-8 text-center hover:border-primary/30 transition-all group"
+                className="bg-card border border-border rounded-xl p-8 text-center hover:border-primary/40 hover:shadow-md transition-all group"
               >
                 <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center text-primary mx-auto mb-4 group-hover:scale-110 transition-transform">
                   {method.icon}
@@ -79,7 +79,7 @@ export default function Contact() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-r from-primary/20 via-secondary/20 to-primary/20 border border-white/10 rounded-3xl p-12 text-center"
+            className="bg-gradient-to-r from-primary/10 via-secondary/10 to-primary/10 border border-border rounded-3xl p-12 text-center"
           >
             <h2 className="text-3xl font-display font-bold mb-4">
               Ready to See NIYTRI AI in Action?
@@ -88,7 +88,7 @@ export default function Contact() {
               Submit an enquiry and our team will schedule a personalized demo for your organization.
             </p>
             <Link href="/enquiry">
-              <Button size="lg" className="rounded-full bg-white text-black hover:bg-gray-100 px-8 h-14">
+              <Button size="lg" className="rounded-full bg-gradient-to-r from-primary to-secondary text-white hover:opacity-90 px-8 h-14">
                 Request a Demo
               </Button>
             </Link>
@@ -97,7 +97,7 @@ export default function Contact() {
       </section>
 
       {/* Hours */}
-      <section className="py-16 bg-card/30">
+      <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-6">
           <div className="max-w-2xl mx-auto text-center">
             <Clock className="w-12 h-12 text-primary mx-auto mb-4" />

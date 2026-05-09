@@ -50,6 +50,8 @@ type FormData = z.infer<typeof formSchema>;
 
 const industries = [
   "Banking & Finance",
+  "Insurance",
+  "NBFC & Fintech",
   "IT & Technology",
   "Manufacturing",
   "Retail & E-commerce",
@@ -165,11 +167,16 @@ export default function Enquiry() {
                 ))}
               </div>
 
-              <div className="mt-12 p-6 bg-card/50 border border-white/10 rounded-xl">
+              <div className="mt-12 p-6 bg-card border border-border rounded-xl">
                 <p className="text-sm text-muted-foreground mb-2">
                   Have questions?
                 </p>
-                <p className="font-medium mb-4">Email us at support@niytri.com</p>
+                <p className="font-medium mb-4">
+                  Email us at{" "}
+                  <a href="mailto:admin@niytri.com" className="text-primary hover:underline">
+                    admin@niytri.com
+                  </a>
+                </p>
                 <p className="text-xs text-muted-foreground">
                   We typically respond within 24 hours
                 </p>
@@ -183,7 +190,7 @@ export default function Enquiry() {
               transition={{ delay: 0.2 }}
             >
               {isSubmitted ? (
-                <div className="bg-card/50 border border-white/10 rounded-2xl p-12 text-center">
+                <div className="bg-card border border-border rounded-2xl p-12 text-center">
                   <div className="w-20 h-20 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-6">
                     <CheckCircle className="w-10 h-10 text-green-500" />
                   </div>
@@ -203,7 +210,7 @@ export default function Enquiry() {
                   </Button>
                 </div>
               ) : (
-                <div className="bg-card/50 border border-white/10 rounded-2xl p-8">
+                <div className="bg-card border border-border rounded-2xl p-8">
                   <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -219,7 +226,7 @@ export default function Enquiry() {
                                   <Input
                                     {...field}
                                     placeholder="Rahul"
-                                    className="pl-10 bg-background/50 border-white/10"
+                                    className="pl-10"
                                     data-testid="input-first-name"
                                   />
                                 </div>
@@ -238,7 +245,6 @@ export default function Enquiry() {
                                 <Input
                                   {...field}
                                   placeholder="Sharma"
-                                  className="bg-background/50 border-white/10"
                                   data-testid="input-last-name"
                                 />
                               </FormControl>
@@ -261,7 +267,7 @@ export default function Enquiry() {
                                   {...field}
                                   type="email"
                                   placeholder="rahul@company.com"
-                                  className="pl-10 bg-background/50 border-white/10"
+                                  className="pl-10"
                                   data-testid="input-email"
                                 />
                               </div>
@@ -284,7 +290,7 @@ export default function Enquiry() {
                                   {...field}
                                   type="tel"
                                   placeholder="+91 98765 43210"
-                                  className="pl-10 bg-background/50 border-white/10"
+                                  className="pl-10"
                                   data-testid="input-phone"
                                 />
                               </div>
@@ -307,7 +313,7 @@ export default function Enquiry() {
                                   <Input
                                     {...field}
                                     placeholder="Acme Corp"
-                                    className="pl-10 bg-background/50 border-white/10"
+                                    className="pl-10"
                                     data-testid="input-company"
                                   />
                                 </div>
@@ -326,7 +332,6 @@ export default function Enquiry() {
                                 <Input
                                   {...field}
                                   placeholder="CTO"
-                                  className="bg-background/50 border-white/10"
                                   data-testid="input-job-title"
                                 />
                               </FormControl>
@@ -345,7 +350,7 @@ export default function Enquiry() {
                               <FormLabel>Company Size *</FormLabel>
                               <Select onValueChange={field.onChange} defaultValue={field.value}>
                                 <FormControl>
-                                  <SelectTrigger className="bg-background/50 border-white/10" data-testid="select-company-size">
+                                  <SelectTrigger data-testid="select-company-size">
                                     <Users className="w-4 h-4 mr-2 text-muted-foreground" />
                                     <SelectValue placeholder="Select size" />
                                   </SelectTrigger>
@@ -370,7 +375,7 @@ export default function Enquiry() {
                               <FormLabel>Industry *</FormLabel>
                               <Select onValueChange={field.onChange} defaultValue={field.value}>
                                 <FormControl>
-                                  <SelectTrigger className="bg-background/50 border-white/10" data-testid="select-industry">
+                                  <SelectTrigger data-testid="select-industry">
                                     <SelectValue placeholder="Select industry" />
                                   </SelectTrigger>
                                 </FormControl>
@@ -398,7 +403,7 @@ export default function Enquiry() {
                               <Textarea
                                 {...field}
                                 placeholder="Tell us about your use case or any specific requirements..."
-                                className="bg-background/50 border-white/10 min-h-[100px]"
+                                className="min-h-[100px]"
                                 data-testid="textarea-message"
                               />
                             </FormControl>
