@@ -1,17 +1,14 @@
 import { Link } from "wouter";
 import { Mail, MapPin } from "lucide-react";
-import { useTheme } from "@/contexts/theme-context";
-import logoDark from "@assets/logo-dark.png";
-import logoLight from "@assets/logo-light.png";
+import Logo from "@/components/logo";
 
 export default function Footer() {
-  const { isDark } = useTheme();
   return (
     <footer className="bg-muted/60 border-t border-border dark:bg-card/80">
       <div className="container mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           <div className="lg:col-span-1">
-            <img src={isDark ? logoDark : logoLight} alt="NIYTRI AI" className="h-12 w-auto mb-6" />
+            <Logo className="h-12 w-auto text-foreground mb-6" idSuffix="footer" />
             <p className="text-muted-foreground text-sm leading-relaxed mb-6">
               Enterprise AI Platform and IT Services for Indian businesses. Transforming BFSI and Manufacturing sectors with intelligent automation.
             </p>

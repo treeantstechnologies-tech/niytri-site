@@ -4,8 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, Moon, Sun, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "@/contexts/theme-context";
-import logoDark from "@assets/logo-dark.png";
-import logoLight from "@assets/logo-light.png";
+import Logo from "@/components/logo";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -41,7 +40,7 @@ export default function Navbar() {
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-3">
-          <img src={isDark ? logoDark : logoLight} alt="NIYTRI AI" className="h-10 w-auto" />
+          <Logo className="h-10 w-auto text-foreground" idSuffix="nav" />
         </Link>
 
         <div className="hidden lg:flex items-center gap-6">
