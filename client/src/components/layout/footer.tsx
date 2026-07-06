@@ -1,6 +1,6 @@
 import { Link } from "wouter";
-import { Mail } from "lucide-react";
-import logo from "@assets/NIYTRI-LOGO_1767820640016.png";
+import { Mail, MapPin } from "lucide-react";
+import logo from "@assets/logo-optimized.png";
 
 export default function Footer() {
   return (
@@ -43,10 +43,13 @@ export default function Footer() {
               <li><Link href="/solutions" className="text-muted-foreground hover:text-primary transition-colors">Solutions</Link></li>
               <li><Link href="/products" className="text-muted-foreground hover:text-primary transition-colors">Products</Link></li>
               <li><Link href="/contact" className="text-muted-foreground hover:text-primary transition-colors">Contact</Link></li>
-              <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Privacy Policy</a></li>
               <li className="flex items-center gap-2 text-muted-foreground pt-2">
                 <Mail className="w-4 h-4 text-primary" />
                 <a href="mailto:admin@niytri.com" className="hover:text-primary transition-colors">admin@niytri.com</a>
+              </li>
+              <li className="flex items-center gap-2 text-muted-foreground">
+                <MapPin className="w-4 h-4 text-primary" />
+                <span>Mumbai, Maharashtra, India</span>
               </li>
             </ul>
           </div>

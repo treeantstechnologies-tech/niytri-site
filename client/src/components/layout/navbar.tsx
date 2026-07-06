@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, Moon, Sun, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "@/contexts/theme-context";
-import logo from "@assets/NIYTRI-LOGO_1767820640016.png";
+import logo from "@assets/logo-optimized.png";
 
 const navLinks = [
   { href: "/", label: "Home" },

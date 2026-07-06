@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { Mail, Clock } from "lucide-react";
+import { Mail, Clock, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
@@ -9,10 +9,29 @@ const contactMethods = [
   {
     icon: <Mail className="w-6 h-6" />,
     title: "Email Us",
-    description: "For general inquiries and support",
+    description: "For general inquiries",
     value: "admin@niytri.com",
     action: "mailto:admin@niytri.com",
   },
+  {
+    icon: <Mail className="w-6 h-6" />,
+    title: "Support",
+    description: "For technical support and assistance",
+    value: "support@niytri.com",
+    action: "mailto:support@niytri.com",
+  },
+];
+
+// Registered offices. Add new locations here (e.g. Australia) as they open.
+const offices = [
+  {
+    country: "India",
+    address: "Mumbai, Maharashtra, India",
+  },
+  // {
+  //   country: "Australia",
+  //   address: "TBD",
+  // },
 ];
 
 export default function Contact() {
@@ -49,7 +68,7 @@ export default function Contact() {
       {/* Contact Methods */}
       <section className="py-16">
         <div className="container mx-auto px-6">
-          <div className="flex justify-center">
+          <div className="flex flex-wrap justify-center gap-6">
             {contactMethods.map((method, idx) => (
               <motion.a
                 key={idx}
@@ -67,6 +86,30 @@ export default function Contact() {
                 <p className="text-muted-foreground text-sm mb-3">{method.description}</p>
                 <p className="text-primary font-medium">{method.value}</p>
               </motion.a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Offices */}
+      <section className="py-16 bg-muted/30">
+        <div className="container mx-auto px-6">
+          <h2 className="text-2xl font-display font-bold text-center mb-10">Our Offices</h2>
+          <div className="flex flex-wrap justify-center gap-6">
+            {offices.map((office) => (
+              <motion.div
+                key={office.country}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="bg-card border border-border rounded-xl p-8 text-center min-w-[260px]"
+              >
+                <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center text-primary mx-auto mb-4">
+                  <MapPin className="w-6 h-6" />
+                </div>
+                <h3 className="text-lg font-bold mb-1">{office.country}</h3>
+                <p className="text-muted-foreground text-sm">{office.address}</p>
+              </motion.div>
             ))}
           </div>
         </div>
