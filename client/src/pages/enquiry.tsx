@@ -6,7 +6,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import {
   ArrowRight,
   Building,
+  Check,
   CheckCircle,
+  ChevronsUpDown,
   Loader2,
   Mail,
   Phone,
@@ -31,6 +33,20 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from "@/components/ui/command";
+import { countryCodes } from "@/lib/country-codes";
 import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
 
@@ -51,17 +67,6 @@ const formSchema = z.object({
 });
 
 type FormData = z.infer<typeof formSchema>;
-
-const countryCodes = [
-  { code: "+91", label: "🇮🇳 +91" },
-  { code: "+61", label: "🇦🇺 +61" },
-  { code: "+1", label: "🇺🇸 +1" },
-  { code: "+44", label: "🇬🇧 +44" },
-  { code: "+971", label: "🇦🇪 +971" },
-  { code: "+65", label: "🇸🇬 +65" },
-  { code: "+966", label: "🇸🇦 +966" },
-  { code: "+64", label: "🇳🇿 +64" },
-];
 
 const industries = [
   "Banking & Finance",
@@ -96,6 +101,7 @@ const benefits = [
 export default function Enquiry() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [ccOpen, setCcOpen] = useState(false);
 
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
@@ -306,18 +312,47 @@ export default function Enquiry() {
                                 control={form.control}
                                 name="countryCode"
                                 render={({ field: ccField }) => (
-                                  <Select onValueChange={ccField.onChange} value={ccField.value}>
-                                    <SelectTrigger className="w-28 shrink-0" data-testid="select-country-code">
-                                      <SelectValue placeholder="Code" />
-                                    </SelectTrigger>
-                                    <SelectContent>
-                                      {countryCodes.map((c) => (
-                                        <SelectItem key={c.code} value={c.code}>
-                                          {c.label}
-                                        </SelectItem>
-                                      ))}
-                                    </SelectContent>
-                                  </Select>
+                                  <Popover open={ccOpen} onOpenChange={setCcOpen}>
+                                    <PopoverTrigger asChild>
+                                      <Button
+                                        type="button"
+                                        variant="outline"
+                                        role="combobox"
+                                        aria-expanded={ccOpen}
+                                        className="w-28 shrink-0 justify-between px-3 font-normal"
+                                        data-testid="select-country-code"
+                                      >
+                                        {ccField.value}
+                                        <ChevronsUpDown className="ml-1 h-4 w-4 shrink-0 opacity-50" />
+                                      </Button>
+                                    </PopoverTrigger>
+                                    <PopoverContent className="w-72 p-0" align="start">
+                                      <Command>
+                                        <CommandInput placeholder="Search country..." />
+                                        <CommandList>
+                                          <CommandEmpty>No country found.</CommandEmpty>
+                                          <CommandGroup>
+                                            {countryCodes.map((c) => (
+                                              <CommandItem
+                                                key={`${c.iso}-${c.dial}`}
+                                                value={`${c.name} ${c.dial}`}
+                                                onSelect={() => {
+                                                  ccField.onChange(c.dial);
+                                                  setCcOpen(false);
+                                                }}
+                                              >
+                                                <Check
+                                                  className={`mr-2 h-4 w-4 ${ccField.value === c.dial ? "opacity-100" : "opacity-0"}`}
+                                                />
+                                                <span className="flex-1">{c.name}</span>
+                                                <span className="text-muted-foreground">{c.dial}</span>
+                                              </CommandItem>
+                                            ))}
+                                          </CommandGroup>
+                                        </CommandList>
+                                      </Command>
+                                    </PopoverContent>
+                                  </Popover>
                                 )}
                               />
                               <FormControl>
