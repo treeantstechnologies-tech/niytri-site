@@ -41,7 +41,7 @@ const values = [
 const milestones = [
   { year: "2024", event: "NIYTRI Technologies founded in Australia" },
   { year: "2024", event: "First enterprise deployment with 7 AI assistants" },
-  { year: "2025", event: "India operations established with BH2S, our key partner in India" },
+  { year: "2025", event: "India operations established with BH2S Learning and Technologies, our key partner in India" },
   { year: "2025", event: "Compliance Bot launched for BFSI sector" },
   { year: "2025", event: "DataLens and Astra modules released" },
   { year: "2025", event: "Manufacturing vertical onboarded as second key industry" },
@@ -107,7 +107,7 @@ export default function About() {
                 <p>
                   Founded by NIYTRI Technologies in Australia, we set out to build an enterprise AI platform
                   that truly understands regulated business needs. In 2025, we established our India
-                  operations with BH2S — our key partner in India — bringing deep local expertise in RBI
+                  operations with BH2S Learning and Technologies — our key partner in India — bringing deep local expertise in RBI
                   compliance for banks, IRDAI guidelines for insurers, and GST context for finance teams.
                 </p>
                 <p>

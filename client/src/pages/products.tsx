@@ -16,6 +16,7 @@ import {
   Scale,
   Shield,
   Sparkles,
+  TrendingUp,
   Users,
   Wrench,
   Zap,
@@ -25,6 +26,32 @@ import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
 
 const products = [
+  {
+    id: "investment-intelligence",
+    icon: <TrendingUp className="w-10 h-10" />,
+    name: "NIYTRI Investment Intelligence",
+    tagline: "AI-Powered Market Intelligence for Traders and Brokers",
+    badge: "Key Product",
+    badgeColor: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
+    description:
+      "NIYTRI Investment Intelligence is an AI-powered research and analytics platform built for traders, brokers, and investment firms. It turns market data, filings, and news into actionable intelligence — helping desks research faster, spot opportunities earlier, and serve clients with confidence.",
+    highlights: [
+      "AI-driven market and stock analysis",
+      "Real-time market data and alerts",
+      "AI research assistant for equities",
+      "Portfolio tracking and insights",
+      "Technical and fundamental signals",
+      "Watchlists and smart screeners",
+      "News and sentiment analysis",
+      "Broker and trading-desk workflows",
+      "SEBI-aware compliance context",
+      "Web-based, secure access",
+    ],
+    color: "from-amber-500 to-orange-600",
+    ctaLink: "/enquiry",
+    ctaLabel: "Request Demo",
+    industries: ["Broking", "Wealth Management", "BFSI"],
+  },
   {
     id: "niytri-ai",
     icon: <Bot className="w-10 h-10" />,

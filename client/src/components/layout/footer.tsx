@@ -17,6 +17,7 @@ export default function Footer() {
           <div>
             <h4 className="font-display font-bold text-foreground mb-6">NIYTRI AI</h4>
             <ul className="space-y-3 text-sm">
+              <li><Link href="/products" className="text-muted-foreground hover:text-primary transition-colors">Investment Intelligence</Link></li>
               <li><Link href="/platform" className="text-muted-foreground hover:text-primary transition-colors">AI Platform</Link></li>
               <li><Link href="/platform" className="text-muted-foreground hover:text-primary transition-colors">DataLens Analytics</Link></li>
               <li><Link href="/platform" className="text-muted-foreground hover:text-primary transition-colors">Astra Global Search</Link></li>
