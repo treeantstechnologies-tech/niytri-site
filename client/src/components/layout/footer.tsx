@@ -45,11 +45,15 @@ export default function Footer() {
               <li><Link href="/contact" className="text-muted-foreground hover:text-primary transition-colors">Contact</Link></li>
               <li className="flex items-center gap-2 text-muted-foreground pt-2">
                 <Mail className="w-4 h-4 text-primary" />
-                <a href="mailto:admin@niytri.com" className="hover:text-primary transition-colors">admin@niytri.com</a>
+                <a href="mailto:support@niytri.com" className="hover:text-primary transition-colors">support@niytri.com</a>
               </li>
               <li className="flex items-center gap-2 text-muted-foreground">
                 <MapPin className="w-4 h-4 text-primary" />
                 <span>Mumbai, Maharashtra, India</span>
+              </li>
+              <li className="flex items-center gap-2 text-muted-foreground">
+                <MapPin className="w-4 h-4 text-primary" />
+                <span>Quakers Hill, NSW, Australia</span>
               </li>
             </ul>
           </div>

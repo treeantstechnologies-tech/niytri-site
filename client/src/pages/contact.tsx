@@ -9,29 +9,22 @@ const contactMethods = [
   {
     icon: <Mail className="w-6 h-6" />,
     title: "Email Us",
-    description: "For general inquiries",
-    value: "admin@niytri.com",
-    action: "mailto:admin@niytri.com",
-  },
-  {
-    icon: <Mail className="w-6 h-6" />,
-    title: "Support",
-    description: "For technical support and assistance",
+    description: "For general inquiries and support",
     value: "support@niytri.com",
     action: "mailto:support@niytri.com",
   },
 ];
 
-// Registered offices. Add new locations here (e.g. Australia) as they open.
+// Registered offices. Add new locations here as they open.
 const offices = [
   {
     country: "India",
     address: "Mumbai, Maharashtra, India",
   },
-  // {
-  //   country: "Australia",
-  //   address: "TBD",
-  // },
+  {
+    country: "Australia",
+    address: "Quakers Hill, NSW, Australia",
+  },
 ];
 
 export default function Contact() {
@@ -58,8 +51,8 @@ export default function Contact() {
               </span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Have questions about NIYTRI AI or our IT Services? We're here to help. Reach out for 
-              sales inquiries, support, or partnership opportunities.
+              Have questions about NIYTRI AI or our IT Services? We're here to help. Reach out for
+              sales inquiries, support, or partnership opportunities — from our offices in India and Australia.
             </p>
           </motion.div>
         </div>

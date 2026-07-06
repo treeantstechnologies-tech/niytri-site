@@ -5,7 +5,7 @@
  *   M365_TENANT_ID     - Entra ID (Azure AD) tenant ID
  *   M365_CLIENT_ID     - App registration client ID
  *   M365_CLIENT_SECRET - App registration client secret
- *   M365_SENDER        - Mailbox to send from, e.g. admin@niytri.com
+ *   M365_SENDER        - Mailbox to send from, e.g. support@niytri.com
  *                        (app needs Mail.Send application permission,
  *                        admin-consented; optionally restricted to this
  *                        mailbox via an ApplicationAccessPolicy)

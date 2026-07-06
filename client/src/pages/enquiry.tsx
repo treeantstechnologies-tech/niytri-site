@@ -38,7 +38,11 @@ const formSchema = z.object({
   firstName: z.string().min(2, "First name is required"),
   lastName: z.string().min(1, "Last name is required"),
   email: z.string().email("Please enter a valid email"),
-  phone: z.string().min(10, "Please enter a valid phone number"),
+  countryCode: z.string().min(1, "Code"),
+  phone: z
+    .string()
+    .min(8, "Please enter a valid phone number")
+    .regex(/^[0-9\s-]+$/, "Digits only — country code is selected separately"),
   company: z.string().min(2, "Company name is required"),
   jobTitle: z.string().min(2, "Job title is required"),
   companySize: z.string().min(1, "Please select company size"),
@@ -47,6 +51,17 @@ const formSchema = z.object({
 });
 
 type FormData = z.infer<typeof formSchema>;
+
+const countryCodes = [
+  { code: "+91", label: "🇮🇳 +91" },
+  { code: "+61", label: "🇦🇺 +61" },
+  { code: "+1", label: "🇺🇸 +1" },
+  { code: "+44", label: "🇬🇧 +44" },
+  { code: "+971", label: "🇦🇪 +971" },
+  { code: "+65", label: "🇸🇬 +65" },
+  { code: "+966", label: "🇸🇦 +966" },
+  { code: "+64", label: "🇳🇿 +64" },
+];
 
 const industries = [
   "Banking & Finance",
@@ -88,6 +103,7 @@ export default function Enquiry() {
       firstName: "",
       lastName: "",
       email: "",
+      countryCode: "+91",
       phone: "",
       company: "",
       jobTitle: "",
@@ -100,12 +116,14 @@ export default function Enquiry() {
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
     try {
+      const { countryCode, ...rest } = data;
+      const payload = { ...rest, phone: `${countryCode} ${data.phone.trim()}` };
       const response = await fetch("/api/enquiries", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(payload),
       });
 
       const result = await response.json();
@@ -173,8 +191,8 @@ export default function Enquiry() {
                 </p>
                 <p className="font-medium mb-4">
                   Email us at{" "}
-                  <a href="mailto:admin@niytri.com" className="text-primary hover:underline">
-                    admin@niytri.com
+                  <a href="mailto:support@niytri.com" className="text-primary hover:underline">
+                    support@niytri.com
                   </a>
                 </p>
                 <p className="text-xs text-muted-foreground">
@@ -283,18 +301,38 @@ export default function Enquiry() {
                         render={({ field }) => (
                           <FormItem>
                             <FormLabel>Phone Number *</FormLabel>
-                            <FormControl>
-                              <div className="relative">
-                                <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-                                <Input
-                                  {...field}
-                                  type="tel"
-                                  placeholder="+91 98765 43210"
-                                  className="pl-10"
-                                  data-testid="input-phone"
-                                />
-                              </div>
-                            </FormControl>
+                            <div className="flex gap-2">
+                              <FormField
+                                control={form.control}
+                                name="countryCode"
+                                render={({ field: ccField }) => (
+                                  <Select onValueChange={ccField.onChange} value={ccField.value}>
+                                    <SelectTrigger className="w-28 shrink-0" data-testid="select-country-code">
+                                      <SelectValue placeholder="Code" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                      {countryCodes.map((c) => (
+                                        <SelectItem key={c.code} value={c.code}>
+                                          {c.label}
+                                        </SelectItem>
+                                      ))}
+                                    </SelectContent>
+                                  </Select>
+                                )}
+                              />
+                              <FormControl>
+                                <div className="relative flex-1">
+                                  <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                                  <Input
+                                    {...field}
+                                    type="tel"
+                                    placeholder="98765 43210"
+                                    className="pl-10"
+                                    data-testid="input-phone"
+                                  />
+                                </div>
+                              </FormControl>
+                            </div>
                             <FormMessage />
                           </FormItem>
                         )}

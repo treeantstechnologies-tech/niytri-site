@@ -48,7 +48,7 @@ export async function registerRoutes(
                 ${validatedData.message ? `<p><strong>Message:</strong> ${esc(validatedData.message)}</p>` : ""}
               </div>
 
-              <p>In the meantime, feel free to explore our platform documentation or reach out to us at <a href="mailto:admin@niytri.com">admin@niytri.com</a></p>
+              <p>In the meantime, feel free to explore our platform documentation or reach out to us at <a href="mailto:support@niytri.com">support@niytri.com</a></p>
 
               <p style="margin-top: 30px; color: #666;">Best regards,<br/>The NIYTRI AI Team</p>
             </div>

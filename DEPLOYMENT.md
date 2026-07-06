@@ -39,9 +39,9 @@ In the Microsoft Entra admin center (entra.microsoft.com), signed in as an M365 
 3. **API permissions → Add a permission → Microsoft Graph → Application permissions → `Mail.Send`**, then click **Grant admin consent**.
 4. Recommended: restrict the app to the sending mailbox only, so the secret can't send as anyone else. In Exchange Online PowerShell:
    ```powershell
-   New-ApplicationAccessPolicy -AppId <CLIENT_ID> -PolicyScopeGroupId admin@niytri.com -AccessRight RestrictAccess -Description "NIYTRI site mailer"
+   New-ApplicationAccessPolicy -AppId <CLIENT_ID> -PolicyScopeGroupId support@niytri.com -AccessRight RestrictAccess -Description "NIYTRI site mailer"
    ```
-5. Make sure `admin@niytri.com` is a real licensed mailbox (not just an alias).
+5. Make sure `support@niytri.com` is a real licensed mailbox (not just an alias).
 
 Until these values are filled in, enquiries are still saved to txt files — only the emails are skipped.
 
