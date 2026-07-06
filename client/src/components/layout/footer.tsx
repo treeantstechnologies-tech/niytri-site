@@ -57,7 +57,7 @@ export default function Footer() {
 
         <div className="border-t border-border mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs text-muted-foreground">
-            © 2026 NIYTRI Solutions. All rights reserved.
+            © {new Date().getFullYear()} NIYTRI Technologies Private Limited. All rights reserved.
           </p>
           <p className="text-xs text-muted-foreground">
             Made with ❤️ in India
