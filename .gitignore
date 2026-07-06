@@ -6,6 +6,7 @@ vite.config.ts.*
 *.tar.gz
 .env
 logs
+data
 
 # Replit leftovers / local agent state
 .replit

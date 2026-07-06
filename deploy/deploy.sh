@@ -19,12 +19,8 @@ npm run check
 echo "==> Building client + server..."
 npm run build
 
-echo "==> Syncing database schema..."
-set -a; source .env; set +a
-npx drizzle-kit push
-
 echo "==> Starting/reloading with PM2..."
-mkdir -p logs
+mkdir -p logs data/enquiries
 pm2 startOrReload ecosystem.config.cjs
 pm2 save
 

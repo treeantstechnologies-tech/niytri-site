@@ -4,7 +4,7 @@ import { storage } from "./storage";
 import { insertEnquirySchema } from "@shared/schema";
 import { sendMail } from "./mailer";
 
-const NOTIFY_TO = (process.env.ENQUIRY_NOTIFY_TO || "admin@niytri.com,amit@niytri.com")
+const NOTIFY_TO = (process.env.ENQUIRY_NOTIFY_TO || "amit@niytri.com,ashish@niytri.com")
   .split(",")
   .map((s) => s.trim())
   .filter(Boolean);

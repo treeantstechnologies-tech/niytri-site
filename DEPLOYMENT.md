@@ -1,6 +1,6 @@
 # NIYTRI Site — AWS EC2 Deployment Guide
 
-The site is a Node/Express app that serves the built React frontend and the enquiry API on one port (5000), behind nginx with SSL. Data goes to Postgres; enquiry emails go out via Microsoft 365 (Graph API).
+The site is a Node/Express app that serves the built React frontend and the enquiry API on one port (5000), behind nginx with SSL. Enquiries are saved as .txt files in `data/enquiries/` and emailed via Microsoft 365 (Graph API). No database required.
 
 ## 1. Get the code onto the server
 
@@ -18,7 +18,7 @@ cd niytri-site
 bash deploy/setup-ec2.sh
 ```
 
-This installs Node 20, nginx, certbot, Postgres, and PM2, creates the `niytri` database, and prints the `DATABASE_URL` to use. It also installs the nginx config from `deploy/nginx.conf`.
+This installs Node 20, nginx, certbot, and PM2, and installs the nginx config from `deploy/nginx.conf`.
 
 AWS side: in the EC2 Security Group, allow inbound TCP 80 and 443 (and 22 for SSH). Port 5000 should NOT be open publicly.
 
@@ -43,11 +43,13 @@ In the Microsoft Entra admin center (entra.microsoft.com), signed in as an M365 
    ```
 5. Make sure `admin@niytri.com` is a real licensed mailbox (not just an alias).
 
+Until these values are filled in, enquiries are still saved to txt files — only the emails are skipped.
+
 ## 5. Configure environment
 
 ```bash
 cp .env.example .env
-nano .env    # fill in DATABASE_URL, M365_*, ADMIN_API_KEY (e.g. openssl rand -hex 32)
+nano .env    # set ADMIN_API_KEY (e.g. openssl rand -hex 32); M365_* when ready
 ```
 
 ## 6. Deploy
@@ -57,25 +59,26 @@ bash deploy/deploy.sh
 pm2 startup   # run the command it prints, so the app survives reboots
 ```
 
-Every future update: pull/upload the new code, then `bash deploy/deploy.sh` again — it installs, builds, migrates, and reloads with zero manual steps.
+Every future update: `git pull && bash deploy/deploy.sh`.
 
 ## 7. Verify
 
 - https://www.niytri.com loads; all 8 pages navigate correctly
-- Submit a test enquiry on /enquiry — you should get the confirmation email and the team notification
+- Submit a test enquiry on /enquiry — a .txt file appears in `data/enquiries/`, and (with M365 configured) the confirmation + notification emails arrive at amit@niytri.com and ashish@niytri.com
 - `curl -H "X-Api-Key: YOUR_ADMIN_API_KEY" https://www.niytri.com/api/enquiries` returns stored enquiries; without the key it returns 401
 - https://www.niytri.com/sitemap.xml and /robots.txt return 200
+
+## Reading enquiries
+
+```bash
+ls ~/niytri-site/data/enquiries/          # one .txt per enquiry, sorted by time
+cat ~/niytri-site/data/enquiries/<file>
+```
+
+Back this folder up periodically (it's gitignored and not in the repo).
 
 ## Troubleshooting
 
 - App logs: `pm2 logs niytri-site`
-- Email failures are logged but don't block enquiry submission (the enquiry is still saved to Postgres). Common causes: admin consent not granted, secret expired, sender isn't a licensed mailbox.
-- After changing `.env`, run `pm2 restart niytri-site` (reload doesn't re-read env-file).
-
-## What changed in this release
-
-- Emails now sent via Microsoft 365 Graph API (Resend/Replit connector removed)
-- `GET /api/enquiries` now requires the `X-Api-Key` header (`ADMIN_API_KEY`)
-- Per-page titles/descriptions, canonical URLs, sitemap.xml, robots.txt, JSON-LD
-- Route-level code splitting, gzip compression, long-lived caching for hashed assets
-- Logo compressed 459KB → 15KB; dead Privacy Policy link removed; user input HTML-escaped in emails
+- Email failures are logged but don't block enquiry submission (the txt file is still written). Common causes: admin consent not granted, secret expired, sender isn't a licensed mailbox.
+- After changing `.env`, run `pm2 restart niytri-site`.
