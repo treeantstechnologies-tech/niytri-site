@@ -18,6 +18,7 @@ import {
   Scale,
   Shield,
   Sparkles,
+  TrendingUp,
   Users,
   Wrench,
   Zap,
@@ -272,6 +273,46 @@ export default function Home() {
           <div className="w-[1px] h-12 bg-gradient-to-b from-transparent via-primary to-transparent mx-auto mb-2" />
           <span className="text-xs uppercase tracking-widest">Scroll</span>
         </motion.div>
+      </section>
+
+      {/* Key Product: Investment Intelligence */}
+      <section className="py-8">
+        <div className="container mx-auto px-6">
+          <motion.a
+            href="https://dev-invest.niytri.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="block bg-gradient-to-r from-amber-500/10 via-orange-500/10 to-amber-500/10 border border-amber-500/30 rounded-2xl p-6 md:p-8 hover:border-amber-500/60 hover:shadow-lg hover:shadow-amber-500/10 transition-all group"
+            data-testid="banner-investment-intelligence"
+          >
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-white shrink-0">
+                  <TrendingUp className="w-6 h-6" />
+                </div>
+                <div>
+                  <div className="flex items-center gap-2 flex-wrap mb-1">
+                    <h3 className="text-lg md:text-xl font-display font-bold">
+                      NIYTRI Investment Intelligence
+                    </h3>
+                    <span className="px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400 text-xs font-semibold">
+                      Key Product
+                    </span>
+                  </div>
+                  <p className="text-muted-foreground text-sm">
+                    AI-powered market intelligence for traders and brokers
+                  </p>
+                </div>
+              </div>
+              <span className="inline-flex items-center gap-1.5 text-amber-600 dark:text-amber-400 font-medium text-sm shrink-0 group-hover:gap-2.5 transition-all">
+                Open Platform <ArrowRight className="w-4 h-4" />
+              </span>
+            </div>
+          </motion.a>
+        </div>
       </section>
 
       {/* Stats Section */}

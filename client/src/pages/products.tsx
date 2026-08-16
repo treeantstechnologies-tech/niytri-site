@@ -48,8 +48,8 @@ const products = [
       "Web-based, secure access",
     ],
     color: "from-amber-500 to-orange-600",
-    ctaLink: "/enquiry",
-    ctaLabel: "Request Demo",
+    ctaLink: "https://dev-invest.niytri.com/",
+    ctaLabel: "Open Platform",
     industries: ["Broking", "Wealth Management", "BFSI"],
   },
   {
@@ -278,11 +278,19 @@ export default function Products() {
                     ))}
                   </div>
                   <div className="mt-auto flex gap-3">
-                    <Link href={product.ctaLink}>
-                      <Button size="sm" className="rounded-full bg-gradient-to-r from-primary to-secondary text-white hover:opacity-90 px-5">
-                        {product.ctaLabel} <ArrowRight className="ml-1.5 w-4 h-4" />
-                      </Button>
-                    </Link>
+                    {product.ctaLink.startsWith("http") ? (
+                      <a href={product.ctaLink} target="_blank" rel="noopener noreferrer">
+                        <Button size="sm" className="rounded-full bg-gradient-to-r from-primary to-secondary text-white hover:opacity-90 px-5">
+                          {product.ctaLabel} <ArrowRight className="ml-1.5 w-4 h-4" />
+                        </Button>
+                      </a>
+                    ) : (
+                      <Link href={product.ctaLink}>
+                        <Button size="sm" className="rounded-full bg-gradient-to-r from-primary to-secondary text-white hover:opacity-90 px-5">
+                          {product.ctaLabel} <ArrowRight className="ml-1.5 w-4 h-4" />
+                        </Button>
+                      </Link>
+                    )}
                     <Link href="/enquiry">
                       <Button variant="outline" size="sm" className="rounded-full px-5">
                         Enquire
@@ -335,11 +343,19 @@ export default function Products() {
                     ))}
                   </div>
                   <div className="mt-auto flex gap-3">
-                    <Link href={product.ctaLink}>
-                      <Button size="sm" className="rounded-full bg-gradient-to-r from-primary to-secondary text-white hover:opacity-90 px-5">
-                        {product.ctaLabel} <ArrowRight className="ml-1.5 w-4 h-4" />
-                      </Button>
-                    </Link>
+                    {product.ctaLink.startsWith("http") ? (
+                      <a href={product.ctaLink} target="_blank" rel="noopener noreferrer">
+                        <Button size="sm" className="rounded-full bg-gradient-to-r from-primary to-secondary text-white hover:opacity-90 px-5">
+                          {product.ctaLabel} <ArrowRight className="ml-1.5 w-4 h-4" />
+                        </Button>
+                      </a>
+                    ) : (
+                      <Link href={product.ctaLink}>
+                        <Button size="sm" className="rounded-full bg-gradient-to-r from-primary to-secondary text-white hover:opacity-90 px-5">
+                          {product.ctaLabel} <ArrowRight className="ml-1.5 w-4 h-4" />
+                        </Button>
+                      </Link>
+                    )}
                     <Link href="/enquiry">
                       <Button variant="outline" size="sm" className="rounded-full px-5">
                         Enquire
