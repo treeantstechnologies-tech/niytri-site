@@ -9,6 +9,7 @@ import {
   Pill,
   ShieldCheck,
   ShoppingCart,
+  Store,
   Truck,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -81,7 +82,9 @@ const industries = [
   {
     icon: <ShoppingCart className="w-10 h-10" />,
     name: "Retail & E-commerce",
-    description: "Customer service automation, inventory queries, vendor management, and sales analytics for retail businesses.",
+    badge: "Growing Vertical",
+    badgeColor: "bg-pink-100 text-pink-700 dark:bg-pink-900/30 dark:text-pink-400",
+    description: "Customer service automation, inventory queries, vendor management, and sales analytics for retail chains, D2C brands, and e-commerce businesses of every size.",
     useCases: [
       "Customer support automation",
       "Product information queries",
@@ -91,6 +94,22 @@ const industries = [
       "Category management support",
     ],
     color: "from-pink-600 to-rose-600",
+  },
+  {
+    icon: <Store className="w-10 h-10" />,
+    name: "MSME & Small Business",
+    badge: "Growing Vertical",
+    badgeColor: "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400",
+    description: "Right-sized AI assistants and IT services for micro, small, and medium enterprises — affordable, quick to deploy, and built with GST and Indian compliance context, no in-house IT team needed.",
+    useCases: [
+      "Customer enquiry automation on an MSME budget",
+      "GST and compliance query assistance",
+      "Invoice and document digitization",
+      "Inventory and order tracking queries",
+      "MSME scheme and Udyam registration guidance",
+      "Simple daily sales and cash-flow reporting",
+    ],
+    color: "from-lime-600 to-green-600",
   },
   {
     icon: <Pill className="w-10 h-10" />,
@@ -183,8 +202,8 @@ export default function Solutions() {
               </span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              NIYTRI AI is purpose-built for BFSI enterprises, with deep regulatory context for RBI, 
-              SEBI, and IRDAI. We also serve Manufacturing, IT, and other sectors.
+              NIYTRI AI is purpose-built for BFSI enterprises, with deep regulatory context for RBI,
+              SEBI, and IRDAI — and proven expertise across Manufacturing, Retail, MSME, IT, and more.
             </p>
           </motion.div>
         </div>

@@ -235,9 +235,10 @@ export default function Home() {
               variants={fadeInUp}
               className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-10 leading-relaxed"
             >
-              NIYTRI AI is India's enterprise platform for Banking, Financial Services, and Insurance. 
-              Deploy specialized AI assistants for compliance, operations, and customer service — 
-              built with RBI, SEBI, and IRDAI regulatory context.
+              NIYTRI AI is India's enterprise platform for Banking, Financial Services, and Insurance.
+              Deploy specialized AI assistants for compliance, operations, and customer service —
+              built with RBI, SEBI, and IRDAI regulatory context, and scaling from MSMEs and retail
+              businesses to large enterprises.
             </motion.p>
 
             <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4">
@@ -542,8 +543,9 @@ export default function Home() {
               Ready to Transform Your Enterprise?
             </h2>
             <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
-              Join leading Indian BFSI and Manufacturing enterprises using NIYTRI AI to automate 
-              operations, ensure compliance, and deliver exceptional experiences.
+              Join Indian businesses — from BFSI and Manufacturing enterprises to Retail brands and
+              MSMEs — using NIYTRI AI to automate operations, ensure compliance, and deliver
+              exceptional experiences.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link href="/enquiry">

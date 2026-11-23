@@ -10,7 +10,7 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <Logo className="h-12 w-auto text-foreground mb-6" idSuffix="footer" />
             <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-              Enterprise AI Platform and IT Services for Indian businesses. Transforming BFSI and Manufacturing sectors with intelligent automation.
+              Enterprise AI Platform and IT Services for Indian businesses. Transforming BFSI, Manufacturing, Retail, and MSME sectors with intelligent automation.
             </p>
           </div>
 

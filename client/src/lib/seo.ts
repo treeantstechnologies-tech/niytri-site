@@ -20,9 +20,9 @@ const pageMeta: Record<string, PageMeta> = {
       "Explore the NIYTRI AI platform: RAG document intelligence, multi-LLM support, role-based access control, MFA, DataLens analytics, and Astra global search.",
   },
   "/solutions": {
-    title: "AI Solutions for BFSI & Manufacturing | NIYTRI AI",
+    title: "AI Solutions for BFSI, Manufacturing, Retail & MSME | NIYTRI AI",
     description:
-      "Industry AI solutions for banking, financial services, insurance, and manufacturing — compliance, KYC/AML, customer service automation, and operations intelligence.",
+      "Industry AI solutions for banking, financial services, insurance, manufacturing, retail, and MSMEs — compliance, KYC/AML, customer service automation, and operations intelligence.",
   },
   "/services": {
     title: "IT Services — Cloud, Testing, Consulting & Development | NIYTRI AI",
@@ -37,7 +37,7 @@ const pageMeta: Record<string, PageMeta> = {
   "/about": {
     title: "About Us — Enterprise AI Built in India | NIYTRI AI",
     description:
-      "NIYTRI Solutions builds enterprise AI for Indian businesses. Learn about our mission, team, and why leading BFSI and manufacturing companies choose NIYTRI AI.",
+      "NIYTRI builds enterprise AI for Indian businesses. Learn about our mission, team, and why BFSI, manufacturing, retail, and MSME companies choose NIYTRI AI.",
   },
   "/contact": {
     title: "Contact Us | NIYTRI AI",

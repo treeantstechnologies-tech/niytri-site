@@ -46,6 +46,7 @@ const milestones = [
   { year: "2025", event: "DataLens and Astra modules released" },
   { year: "2025", event: "Manufacturing vertical onboarded as second key industry" },
   { year: "2026", event: "Expanded to support 500+ concurrent users with 99.9% SLA" },
+  { year: "2026", event: "Expertise extended to Retail and MSME segments" },
 ];
 
 const team = [
@@ -81,7 +82,7 @@ export default function About() {
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               NIYTRI is on a mission to empower Indian enterprises with AI and technology services — 
               making powerful, secure, and customizable AI accessible to organizations of all sizes, 
-              with a special focus on the BFSI sector.
+              with deep expertise across BFSI, Manufacturing, Retail, and MSME businesses.
             </p>
           </motion.div>
         </div>
